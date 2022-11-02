@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+<main class="conteiner py-5">
+    <section class="card card-body">
+        {% if user.is_authenticated %}
+        <h1 class="display-1 text-center">Bienvenido {{user.username}}</h1>
+        {% else %}
+        {{error}}
+        <h2 class="display-1 text-center">Bienvenido te puedes registar o autenticar</h2>
+        <div class="text-center">
+            <a class="btn btn-primary" href="/signin/">Signin</a>
+            <a class="btn btn-primary" href="/signup/">Signup</a>
+        </div>
+        {% endif %}
+    </section>   
+</main>
+{% endblock titulo %}

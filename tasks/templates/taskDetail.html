@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block header %}Detalle tareas{% endblock header %}
+{% block titulo %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            {{error}}
+            <h1 class="text text-secondary">Nombre de la tarea: {{task.title}}</h1>
+
+            <h1 class="text text-wrap">Fecha creacion: {{task.created}}</h1>
+            <div class="mt-6">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button class="btn btn-primary">
+                        Actualizar
+                    </button>
+                </form>
+                <form action="{% url 'complete_task' task.id %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-secondary">
+                        Completar
+                    </button>
+                </form>
+            
+                <form action="{% url 'delete_task' task.id %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-danger">
+                        eliminar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock titulo %}

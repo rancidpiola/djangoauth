@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block header %}Crear tareas{% endblock header %}
+{% block titulo %}
+<main class="container">
+    
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <H1 class="text-center">Crear tarea</H1>
+            <form action="/tasks/create" method="POST" class="card card-body">
+                {% csrf_token %}
+                {{error}}
+                {{form.as_p}}
+                <button class="btn btn-primary">
+                    Cretar tarea
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock titulo %}

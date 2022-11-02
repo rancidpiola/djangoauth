@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block header %}Tareas{% endblock header %}
+{% block titulo %}
+<main class="conteiner">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center display-3 py-5">Tareas de usuario: {{user.username}}</h1>
+            <ul class="list-group">
+                {% for task in tasks %}
+                <a class="list-group-item" href="{% url 'task_detail' task.id %}">
+                
+                        <head class="d-flex justify-content-between">
+                            <h1 class="fw-bold text-success">{{task.title}}</h1>
+                            <h2 class="fw-bold">{{task.user.username}}</h2>
+                        </head>
+                        <p>{{task.description}}</p>
+
+                        {{task.datecompleted|date:'M j Y:i'}}
+                        {% endfor %}
+                    
+                </a>
+
+            </ul>
+        </div>
+    </div>
+</main>
+{% endblock titulo %}
